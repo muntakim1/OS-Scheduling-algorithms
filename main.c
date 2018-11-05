@@ -9,6 +9,8 @@ Address: Kaliajury Pakkar matha , Cumilla, Bangladesh.
 
 #include<stdio.h>
 #include<stdlib.h>
+
+//process queue
 struct process
 {
       char process_name;
@@ -17,7 +19,7 @@ struct process
 }process_queue[10];
 
 int limit;
-
+//sorting arrival time
 void Arrival_Time_Sorting()
 {
       struct process temp;
@@ -36,7 +38,7 @@ void Arrival_Time_Sorting()
       }
 }
 
-
+//round robin algorithm primitive
 void roundrobin(){
     int count,j,n,time,remain,flag=0,time_quantum;
     int wait_time=0,turnaround_time=0,at[10],bt[10],rt[10];
@@ -52,7 +54,7 @@ void roundrobin(){
   }
   printf("Enter Time Quantum:\t");
   scanf("%d",&time_quantum);
-  printf("\n\nProcess\t|Turnaround Time|Waiting Time\n\n");
+  printf("\n\nProcess\t|Turnaround Time|Waiting Time\n\n");//printing process and their turn around time and waiting time.
   for(time=0,count=0;remain!=0;)
   {
     if(rt[count]<=time_quantum && rt[count]>0)
@@ -81,9 +83,13 @@ void roundrobin(){
     else
       count=0;
   }
-  printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n);
-  printf("Avg Turnaround Time = %f",turnaround_time*1.0/n);
+  printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n);//average waiting time
+  printf("Avg Turnaround Time = %f",turnaround_time*1.0/n);//average turnaround time
 }
+//End of round robin
+
+//Priority Primitive version
+
 void PriorityPRimitive()
 {
       int i, time = 0, burst_time = 0, largest;
@@ -131,6 +137,7 @@ void PriorityPRimitive()
       printf("\n\nAverage waiting time:\t%f\n", average_waiting_time);
       printf("Average Turnaround Time:\t%f\n", average_turnaround_time);
 }
+//Priority non primitive
 void PriorityNP()
 {
     int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
@@ -200,7 +207,7 @@ void PriorityNP()
 
 
     }
-
+//Shortest job first
 void JSF()
 {
     int bt[20],p[20],wt[20],tat[20],i,j,n,total=0,pos,temp;
@@ -262,6 +269,7 @@ void JSF()
     printf("\n\nAverage Waiting Time=%f",avg_wt);
     printf("\nAverage Turnaround Time=%f\n",avg_tat);
 }
+//first come first serve
 void FCFS(){
      int n,bt[20],wt[20],tat[20],avwt=0,avtat=0,i,j;
     printf("\nEnter total number of processes(maximum 20):");
@@ -301,6 +309,7 @@ void FCFS(){
     printf("\nAverage Turnaround Time:%d",avtat);
 
 }
+//main function
 int main(){
     int choice;
     printf("Enter Your choice: \n");
@@ -311,22 +320,22 @@ int main(){
 
     switch(choice){
     case 1:
-        FCFS();
+        FCFS();//calling first come first serve
         break;
     case 2:
-        JSF();
+        JSF();//calling shortest job first
         break;
     case 3:
-        PriorityNP();
+        PriorityNP();//calling priority non primitive
         break;
     case 4:
-        PriorityPRimitive();
+        PriorityPRimitive();//calling priority primitive
         break;
     case 5:
-        roundrobin();
+        roundrobin();//calling round robin
         break;
     case 0:
-        exit(1);
+        exit(1);//calling termination
 
     default:
         printf("Please select a valid Choice!!");
