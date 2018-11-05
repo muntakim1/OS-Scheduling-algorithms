@@ -1,3 +1,12 @@
+/*
+Os Scheduling algorithms implementation
+version: v1.0
+Author: Muntakimur Rahaman,
+Author Email: muntakimur1104001@gmail.com
+Address: Kaliajury Pakkar matha , Cumilla, Bangladesh.
+*/
+
+
 #include<stdio.h>
 #include<stdlib.h>
 struct process
